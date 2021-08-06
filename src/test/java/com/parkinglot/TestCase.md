@@ -1,10 +1,10 @@
 # Story 1
-[] Case1
+[X] Case1
 Given a parking lot, and a car
 When park the car
 Then return a parking ticket.
 
-[] Case2
+[X] Case2
 Given a parking lot, and a valid parking ticket
 When fetch the car
 Then return a car.
