@@ -24,7 +24,7 @@ Given a parking lot with two parked cars, and two parking tickets,
 When fetch the car Twice,
 Then return the right car with each ticket
 
-[] Case6
+[X] Case6
 Given a parking lot at full capacity, and a car
 When park the car
 Then the car cannot be parked, and no ticket is provided

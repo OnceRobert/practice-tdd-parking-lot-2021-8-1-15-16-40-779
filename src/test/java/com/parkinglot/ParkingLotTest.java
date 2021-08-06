@@ -2,6 +2,7 @@ package com.parkinglot;
 
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class ParkingLotTest {
-
+    private ByteArrayOutputStream commandLineMessage = new ByteArrayOutputStream();
 
     @Test
     public void should_return_parking_ticket_when_park_given_a_parking_lot_and_a_car()
@@ -128,6 +129,35 @@ public class ParkingLotTest {
         //then
         assertNull(actualTicket);
 
+    }
+
+    @Test
+    public void should_return_unrecognized_ticket_when_fetch_given_a_parking_lot_with_and_a_used_or_invalid_parking_ticket()
+    {
+        //given
+        ParkingLot parkingLot = new ParkingLot();
+        Car car = new Car();
+        ParkingTicket parkingTicket = parkingLot.park(car);
+        //Car expectedCar = null;
+
+        //when
+        parkingLot.fetch(parkingTicket);
+        parkingLot.fetch(parkingTicket);        //Used ticket
+
+        //when
+        String expectedMessage = "Unrecognized Ticket\n";
+
+        //then
+        assertEquals(expectedMessage,getCommandLineText());
+
+    }
+
+
+
+
+
+    private String getCommandLineText() {
+        return commandLineMessage.toString();
     }
 
 }
