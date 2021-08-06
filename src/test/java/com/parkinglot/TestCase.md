@@ -19,7 +19,7 @@ Given a parking lot, and an already used parking ticket
 When fetch the car
 Then return no car.
 
-[] Case5
+[X] Case5
 Given a parking lot with two parked cars, and two parking tickets,
 When fetch the car Twice,
 Then return the right car with each ticket

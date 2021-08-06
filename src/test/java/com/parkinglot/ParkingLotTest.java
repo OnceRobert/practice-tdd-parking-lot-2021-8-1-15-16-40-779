@@ -2,8 +2,13 @@ package com.parkinglot;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
+//import static org.junit.jupiter.api.AssertNull.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class ParkingLotTest {
 
@@ -101,6 +106,27 @@ public class ParkingLotTest {
         //then
         assertEquals(expectedMomoCar, actualMomoCar);
         assertEquals(expectedJimmyCar, actualJimmyCar);
+
+    }
+
+    @Test
+    public void should_return_no_ticket_when_fetch_park_given_parking_lot_at_full_capacity()
+    {
+        //given
+        ParkingLot parkingLot = new ParkingLot();
+        List<Car> tdoongCars = new ArrayList<>();
+        List<ParkingTicket> tdoongParkingTickets = new ArrayList<>();
+        for(int i = 0; i<10;i++) {
+               tdoongCars.add(new Car());
+            tdoongParkingTickets.add(parkingLot.park(tdoongCars.get(i)));
+        }
+        Car excessCar = new Car();
+        ParkingTicket expectedTicket = null;
+        //when
+        ParkingTicket actualTicket = parkingLot.park(excessCar);
+
+        //then
+        assertNull(actualTicket);
 
     }
 
