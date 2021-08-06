@@ -1,8 +1,10 @@
 package com.parkinglot;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +15,11 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class ParkingLotTest {
     private ByteArrayOutputStream commandLineMessage = new ByteArrayOutputStream();
+
+    @BeforeEach
+    public void setup(){
+        System.setOut(new PrintStream(commandLineMessage));
+    }
 
     @Test
     public void should_return_parking_ticket_when_park_given_a_parking_lot_and_a_car()
@@ -149,12 +156,7 @@ public class ParkingLotTest {
 
         //then
         assertEquals(expectedMessage,getCommandLineText());
-
     }
-
-
-
-
 
     private String getCommandLineText() {
         return commandLineMessage.toString();

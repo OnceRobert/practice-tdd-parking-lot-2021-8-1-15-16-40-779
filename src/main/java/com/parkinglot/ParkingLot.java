@@ -18,12 +18,14 @@ public class ParkingLot {
     }
 
     public Car fetch(ParkingTicket parkingTicket) {
-        if(parkingTicket == null)
-            return null;
-        else {
+        if(unclaimedCars.get(parkingTicket) != null){
             Car fetchedCar = unclaimedCars.get(parkingTicket);
             unclaimedCars.remove(parkingTicket);
             return fetchedCar;
+        }
+        else {
+            System.out.print("Unrecognized Ticket\n");
+            return null;
         }
     }
 }
