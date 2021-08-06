@@ -9,7 +9,7 @@ Given a parking lot, and a valid parking ticket
 When fetch the car
 Then return a car.
 
-[] Case3
+[X] Case3
 Given a parking lot, and a invalid/no parking ticket
 When fetch the car
 Then return no car.

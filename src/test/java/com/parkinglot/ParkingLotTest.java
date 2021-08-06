@@ -57,6 +57,26 @@ public class ParkingLotTest {
             assertEquals(carExpected, actualCar);
 
         }
+//
+//    Given a parking lot, and an already used parking ticket
+//    When fetch the car
+//    Then return no car.
 
+    @Test
+    public void should_return_no_car_when_fetch_given_a_parking_lot_with_and_a_used_parking_ticket()
+    {
+        //given
+        ParkingLot parkingLot = new ParkingLot();
+        Car car = new Car();
+        ParkingTicket parkingTicket = parkingLot.park(car);
+        Car expectedCar = null;
+        //when
+        Car actualCar = parkingLot.fetch(parkingTicket);
+        actualCar = parkingLot.fetch(parkingTicket);
+
+        //then
+        assertEquals(expectedCar, actualCar);
+
+    }
 
 }
