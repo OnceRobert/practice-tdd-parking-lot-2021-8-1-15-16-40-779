@@ -31,7 +31,7 @@ public class ParkingLotTest {
         ParkingTicket parkingTicket = parkingLot.park(car);
 
         //when
-        Car actualCar = parkingLot.fetch(car);
+        Car actualCar = parkingLot.fetch(parkingTicket);
 
         //then
         assertEquals(car, actualCar);
@@ -47,11 +47,11 @@ public class ParkingLotTest {
         {
             //given
             ParkingLot parkingLot = new ParkingLot();
-            Car car = new Car();
-            ParkingTicket parkingTicket = parkingLot.park(car);
+            Car car2 = new Car();
+            ParkingTicket parkingTicket = parkingLot.park(car2);
             Car carExpected = null;
             //when
-            Car actualCar = parkingLot.fetch(car);
+            Car actualCar = parkingLot.fetch(null);
 
             //then
             assertEquals(carExpected, actualCar);
