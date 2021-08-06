@@ -14,12 +14,17 @@ Given a parking lot, and a invalid/no parking ticket
 When fetch the car
 Then return no car.
 
-[] Case4
+[X] Case4
 Given a parking lot, and an already used parking ticket
 When fetch the car
 Then return no car.
 
 [] Case5
+Given a parking lot with two parked cars, and two parking tickets,
+When fetch the car Twice,
+Then return the right car with each ticket
+
+[] Case6
 Given a parking lot at full capacity, and a car
 When park the car
 Then the car cannot be parked, and no ticket is provided

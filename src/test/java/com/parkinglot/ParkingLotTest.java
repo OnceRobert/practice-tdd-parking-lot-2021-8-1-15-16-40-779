@@ -78,5 +78,30 @@ public class ParkingLotTest {
         assertEquals(expectedCar, actualCar);
 
     }
+//    Given a parking lot with two parked cars, and two parking tickets,
+//    When fetch the car Twice,
+//    Then return the right car with each ticket
+    @Test
+    public void should_return_correct_cars_when_fetch_twice_given_a_parking_lot_with_two_parked_car_and_two_parking_tickets()
+    {
+        //given
+        ParkingLot parkingLot = new ParkingLot();
+        Car momoCar = new Car();
+        Car jimmyCar = new Car();
+
+        ParkingTicket momoParkingTicket = parkingLot.park(momoCar);
+        ParkingTicket jimmyParkingTicket = parkingLot.park(jimmyCar);
+        Car expectedMomoCar = momoCar;
+        Car expectedJimmyCar = jimmyCar;
+
+        //when
+        Car actualMomoCar = parkingLot.fetch(momoParkingTicket);
+        Car actualJimmyCar = parkingLot.fetch(jimmyParkingTicket);
+
+        //then
+        assertEquals(expectedMomoCar, actualMomoCar);
+        assertEquals(expectedJimmyCar, actualJimmyCar);
+
+    }
 
 }
