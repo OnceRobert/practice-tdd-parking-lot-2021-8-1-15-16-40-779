@@ -30,7 +30,7 @@ When park the car
 Then the car cannot be parked, and no ticket is provided
 
 # Story 2
-[] Case1
+[X] Case1
 Given a parking lot, and an invalid/used parking ticket
 When fetch the car
 Then give message "Unrecognized parking ticket"
