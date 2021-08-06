@@ -11,7 +11,10 @@ public class ParkingLot {
     public Car fetch(ParkingTicket parkingTicket) {
         if(parkingTicket == null)
             return null;
-        else
-            return car;
+        else {
+            Car fetchedCar = this.car;
+            car = null;
+            return fetchedCar;
+        }
     }
 }
