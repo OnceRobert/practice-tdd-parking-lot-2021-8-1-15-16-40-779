@@ -10,8 +10,8 @@ public class StandardParkingBoy {
         parkingLots.add(danielParkingLot);
     }
 
-    public ParkingTicket park(Car jihyoCar) {
-        return null;
+    public ParkingTicket park(Car car) {
+        return this.getParkingLots().get(0).park(car);
     }
 
     public List<ParkingLot> getParkingLots() {
