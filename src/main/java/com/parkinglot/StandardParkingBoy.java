@@ -14,8 +14,8 @@ public class StandardParkingBoy {
         int i = 0;
         ParkingLot availableParking = parkingLots.get(0);
         while(availableParking.isFull()&&parkingLots.size()>i){
-            i++;
             availableParking = parkingLots.get(i);
+            i++;
         }
         return availableParking.park(car);
     }

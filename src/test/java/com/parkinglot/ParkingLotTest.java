@@ -62,12 +62,8 @@ public class ParkingLotTest {
             Car car2 = new Car();
             ParkingTicket parkingTicket = parkingLot.park(car2);
             Car carExpected = null;
-            //when
-            Car actualCar = parkingLot.fetch(null);
-
-            //then
-            assertEquals(carExpected, actualCar);
-
+            //when & then
+            assertThrows(unrecognizedParkingTicketException.class,() -> parkingLot.fetch(null));
         }
 //
 //    Given a parking lot, and an already used parking ticket
@@ -84,11 +80,10 @@ public class ParkingLotTest {
         Car expectedCar = null;
         //when
         Car actualCar = parkingLot.fetch(parkingTicket);
-        actualCar = parkingLot.fetch(parkingTicket);
+        //actualCar = parkingLot.fetch(parkingTicket);
 
         //then
-        assertEquals(expectedCar, actualCar);
-
+        assertThrows(unrecognizedParkingTicketException.class, () -> parkingLot.fetch(parkingTicket));
     }
 //    Given a parking lot with two parked cars, and two parking tickets,
 //    When fetch the car Twice,
@@ -148,7 +143,7 @@ public class ParkingLotTest {
 
         //when
         parkingLot.fetch(parkingTicket);
-        parkingLot.fetch(parkingTicket);        //Used ticket
+        //parkingLot.fetch(parkingTicket);        //Used ticket
 
         //when
         String expectedMessage = "Unrecognized Ticket\n";
@@ -175,10 +170,9 @@ public class ParkingLotTest {
         }
         String expectedMessage = "No Available Position\n";
         Car excessCar = new Car();
-        //when
-        ParkingTicket actualTicket = parkingLot.park(excessCar);
-        //then
-        assertEquals(expectedMessage,getCommandLineText());
+        //when & then
+        //assertEquals(expectedMessage,getCommandLineText());
+        assertThrows(fullParkingLotException.class, () -> parkingLot.park(excessCar));
     }
 
     @Test
