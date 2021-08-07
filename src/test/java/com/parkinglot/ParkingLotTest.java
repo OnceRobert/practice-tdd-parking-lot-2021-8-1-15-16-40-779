@@ -390,6 +390,26 @@ public class ParkingLotTest {
         assertThrows(unrecognizedParkingTicketException.class, () -> danielParkingBoy.fetch(jihyoTicket));
     }
 
+    @Test
+    void should_return_no_available_positions_when_standard_parking_boy_park_given_two_parking_lots_at_full_capacity_and_car()
+    {
+        //given
+        ParkingLot tdoongParkingLot = new ParkingLot(1);
+        ParkingLot itzyParkingLot = new ParkingLot(1);
+        Car jihyoCar = new Car();
+        Car chaeryeongCar = new Car();
+        Car excessCar = new Car();
+        StandardParkingBoy danielParkingBoy = new StandardParkingBoy();
+        danielParkingBoy.addParkingLot(tdoongParkingLot);
+        danielParkingBoy.addParkingLot(itzyParkingLot);
+        ParkingTicket jihyoTicket = danielParkingBoy.park(jihyoCar);
+        ParkingTicket chaeryeongTicket = danielParkingBoy.park(chaeryeongCar);
+        //when & then
+
+
+        assertThrows(fullParkingLotException.class, () -> danielParkingBoy.park(excessCar));
+    }
+
 
 
 
