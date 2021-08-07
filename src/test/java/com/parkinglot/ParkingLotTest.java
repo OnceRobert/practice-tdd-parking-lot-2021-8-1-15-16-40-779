@@ -436,11 +436,42 @@ public class ParkingLotTest {
         //when
         ParkingTicket yejiTicket = danielParkingBoy.park(yejiCar);
 
-
         //then
         assertEquals(expectedNumberOfCarsInTwo,danielParkingBoy.getParkingLots().get(1).getNumberParkedCars());
 
     }
+
+    @Test
+    void should_park_in_parking_lot_one_when_smart_parking_boy_park_given_parking_lot_with_one_car_and_four_max_capacity_and_a_parking_lot_with_three_cars_and_four_max_capacity()
+    {//Given a smart parking boy, a parking lot with 1 parked cars and 4 max capacity and a parking lot with 3 parked car and 4 max capacity
+        //given
+        ParkingLot tdoongParkingLot = new ParkingLot(4);
+        ParkingLot itzyParkingLot = new ParkingLot(4);
+
+        Car jihyoCar = new Car();
+        Car dahyunCar = new Car();
+
+        Car yunaCar = new Car();
+        Car chaeryeongCar = new Car();
+        Car yejiCar = new Car();
+
+        SmartParkingBoy danielParkingBoy = new SmartParkingBoy();
+        danielParkingBoy.addParkingLot(tdoongParkingLot);
+        danielParkingBoy.addParkingLot(itzyParkingLot);
+        ParkingTicket jihyoTicket = danielParkingBoy.getParkingLots().get(0).park(jihyoCar);
+        ParkingTicket yejiTicket = danielParkingBoy.getParkingLots().get(1).park(yejiCar);
+        ParkingTicket yunaTicket = danielParkingBoy.getParkingLots().get(1).park(yunaCar);
+        ParkingTicket chaeryeongTicket = danielParkingBoy.getParkingLots().get(1).park(chaeryeongCar);
+        int expectedNumberOfCarsInOne = 2;
+
+        //when
+        ParkingTicket dahyunTicket = danielParkingBoy.getParkingLots().get(0).park(dahyunCar);
+
+        //then
+        assertEquals(expectedNumberOfCarsInOne,danielParkingBoy.getParkingLots().get(0).getNumberParkedCars());
+
+    }
+
 
 
 
