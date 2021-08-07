@@ -19,6 +19,10 @@ public class StandardParkingBoy {
     }
 
     public Car fetch(ParkingTicket parkingTicket) {
-        return null;
+        Car fetchedCar = null;
+        for(int i = 0; fetchedCar == null||i<parkingLots.size();i++){
+            fetchedCar = parkingLots.get(i).fetch(parkingTicket);
+        }
+        return fetchedCar;
     }
 }
