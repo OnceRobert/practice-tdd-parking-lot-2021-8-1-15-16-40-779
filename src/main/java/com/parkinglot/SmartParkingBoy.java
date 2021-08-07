@@ -15,13 +15,18 @@ public class SmartParkingBoy {
         ParkingLot availableParking = parkingLots.get(0);
         int maxAvailableSlots = getNumberOfAvaiableSlots(availableParking);
         while(availableParking.isFull()||maxAvailableSlots<getNumberOfAvaiableSlots(parkingLots.get(++i))){
-            availableParking = parkingLots.get(i);
-            if(parkingLots.size()>i)
-                break;
-            else
-                continue;
+            try {
+                availableParking = parkingLots.get(i);
+                maxAvailableSlots = getNumberOfAvaiableSlots(availableParking);
+                //i++;
+            } catch (Exception e){
+                if(parkingLots.size()>i)
+                    continue;
+                else
+                    throw new fullParkingLotException();
+            }
         }
-        return availableParking.park(car);
+            return availableParking.park(car);
     }
 
     public List<ParkingLot> getParkingLots() {
@@ -33,13 +38,14 @@ public class SmartParkingBoy {
         for(int i = 0; fetchedCar == null||i<parkingLots.size();i++){
             try{ fetchedCar = parkingLots.get(i).fetch(parkingTicket); }
             catch (Exception e){
-                if(parkingLots.size()>i)
+                if(i<parkingLots.size())
                     continue;
                 else
                     throw new unrecognizedParkingTicketException();
             }
         }
-        return fetchedCar;
+        try{return fetchedCar;}
+        catch (Exception e){throw new unrecognizedParkingTicketException();}
     }
 
     public int getNumberOfAvaiableSlots(ParkingLot parkingLot){

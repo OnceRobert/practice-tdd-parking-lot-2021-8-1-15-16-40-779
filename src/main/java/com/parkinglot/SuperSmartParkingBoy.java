@@ -1,7 +1,9 @@
 package com.parkinglot;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class SuperSmartParkingBoy {
     List<ParkingLot> parkingLots = new ArrayList<>();
@@ -13,9 +15,10 @@ public class SuperSmartParkingBoy {
     public ParkingTicket park(Car car) {
         int i = 0;
         ParkingLot availableParking = parkingLots.get(0);
-        int maxAvailableSlots = getNumberOfAvaiableSlots(availableParking);
-        while(availableParking.isFull()||maxAvailableSlots<getNumberOfAvaiableSlots(parkingLots.get(++i))){
+        float maxAvailableSlots = getPercentageOfAvaiableSlots(availableParking);
+        while(availableParking.isFull()||maxAvailableSlots<getPercentageOfAvaiableSlots(parkingLots.get(i))){
             availableParking = parkingLots.get(i);
+            i++;
             if(parkingLots.size()>i)
                 break;
             else
@@ -42,8 +45,10 @@ public class SuperSmartParkingBoy {
         return fetchedCar;
     }
 
-    public int getNumberOfAvaiableSlots(ParkingLot parkingLot){
-        return parkingLot.getMaxCapacity() - parkingLot.getNumberParkedCars();
+    public float getPercentageOfAvaiableSlots(ParkingLot parkingLot){
+        float result = (parkingLot.getMaxCapacity() - parkingLot.getNumberParkedCars())/parkingLot.getMaxCapacity() * 100;
+        System.out.println(result);
+        return result;
     }
 
 
