@@ -13,9 +13,13 @@ public class SmartParkingBoy {
     public ParkingTicket park(Car car) {
         int i = 0;
         ParkingLot availableParking = parkingLots.get(0);
-        while(availableParking.isFull()&&parkingLots.size()>i){
+        int maxAvailableSlots = getNumberOfAvaiableSlots(availableParking);
+        while(availableParking.isFull()||maxAvailableSlots<getNumberOfAvaiableSlots(parkingLots.get(++i))){
             availableParking = parkingLots.get(i);
-            i++;
+            if(parkingLots.size()>i)
+                break;
+            else
+                continue;
         }
         return availableParking.park(car);
     }
@@ -36,6 +40,10 @@ public class SmartParkingBoy {
             }
         }
         return fetchedCar;
+    }
+
+    public int getNumberOfAvaiableSlots(ParkingLot parkingLot){
+        return parkingLot.getMaxCapacity() - parkingLot.getNumberParkedCars();
     }
 
 

@@ -48,8 +48,11 @@ public class ParkingLot {
         return unclaimedCars.size() >= maxCapacity;
     }
 
-
     public int getNumberParkedCars(){
         return unclaimedCars.size();
+    }
+
+    public int getMaxCapacity(){
+        return maxCapacity;
     }
 }
