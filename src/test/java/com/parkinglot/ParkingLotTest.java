@@ -425,7 +425,7 @@ public class ParkingLotTest {
         Car chaeryeongCar = new Car();
         Car yejiCar = new Car();
 
-        StandardParkingBoy danielParkingBoy = new StandardParkingBoy();
+        SmartParkingBoy danielParkingBoy = new SmartParkingBoy();
         danielParkingBoy.addParkingLot(tdoongParkingLot);
         danielParkingBoy.addParkingLot(itzyParkingLot);
         ParkingTicket jihyoTicket = danielParkingBoy.getParkingLots().get(0).park(jihyoCar);
