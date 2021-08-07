@@ -9,9 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 //import static org.junit.jupiter.api.AssertNull.assertNull;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
+
 
 public class ParkingLotTest {
     private ByteArrayOutputStream commandLineMessage = new ByteArrayOutputStream();
@@ -118,7 +117,7 @@ public class ParkingLotTest {
     }
 
     @Test
-    public void should_return_no_ticket_when_fetch_park_given_parking_lot_at_full_capacity()
+    public void should_return_no_ticket_when_park_given_parking_lot_at_full_capacity()
     {
         //given
         ParkingLot parkingLot = new ParkingLot();
@@ -175,12 +174,23 @@ public class ParkingLotTest {
         }
         String expectedMessage = "No Available Position\n";
         Car excessCar = new Car();
-
         //when
         ParkingTicket actualTicket = parkingLot.park(excessCar);
-
         //then
         assertEquals(expectedMessage,getCommandLineText());
     }
+
+//    @Test
+//    void should_throw_exception_with_error_message_when_fetch_given_a_parking_lot_and_an_unrecognized_parking_ticket()
+//    {
+//        //given
+//        ParkingLot parkingLot = new ParkingLot();
+//        ParkingTicket unrecognizedParkingTicket = new ParkingTicket();
+//        //when
+//        Exception exception = assertThrows(unrecognizedParkingTicketException.class, () -> parkingLot.fetch(unrecognizedParkingTicket));
+//        assertEquals("Unrecognized parking ticket.", exception.getMessage());
+//        //then
+//    }
+
 
 }

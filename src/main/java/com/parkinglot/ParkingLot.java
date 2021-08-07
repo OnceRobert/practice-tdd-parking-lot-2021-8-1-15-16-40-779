@@ -4,12 +4,24 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ParkingLot {
-    private final int maxCapacity = 10;
+    private int maxCapacity = 10;
     //private Car car;
     private Map<ParkingTicket,Car> unclaimedCars = new HashMap<>();
+
+    public ParkingLot(int maxCapacity){
+        this.maxCapacity = maxCapacity;
+    }
+
+    public ParkingLot(){
+        maxCapacity = 10;
+    }
+
     public ParkingTicket park(Car car) {
-        if (maxCapacity == unclaimedCars.size())
-            return null;
+        if (isFull()) {
+            System.out.print("No Available Position\n");
+            throw new fullParkingLotException();
+            //return null;
+        }
         //this.car = car;
         ParkingTicket newTicket = new ParkingTicket();
         unclaimedCars.put(newTicket, car);
@@ -18,14 +30,29 @@ public class ParkingLot {
     }
 
     public Car fetch(ParkingTicket parkingTicket) {
-        if(unclaimedCars.get(parkingTicket) != null){
-            Car fetchedCar = unclaimedCars.get(parkingTicket);
+        Car fetchedCar = null;
+        try {
+            if (isUnrecognizedTicket(parkingTicket)) {
+                throw new unrecognizedParkingTicketException();
+            }
+            fetchedCar = unclaimedCars.get(parkingTicket);
             unclaimedCars.remove(parkingTicket);
             return fetchedCar;
-        }
-        else {
+        } catch (Exception e) {
             System.out.print("Unrecognized Ticket\n");
-            return null;
+            throw new unrecognizedParkingTicketException();
+        }
+        finally {
+            return fetchedCar;
         }
     }
+
+    private boolean isUnrecognizedTicket(ParkingTicket parkingTicket){
+        return !unclaimedCars.containsKey(parkingTicket);
+    }
+
+    private boolean isFull(){
+        return unclaimedCars.size() >= maxCapacity;
+    }
+
 }
