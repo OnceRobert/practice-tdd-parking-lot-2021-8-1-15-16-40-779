@@ -136,6 +136,8 @@ public class SmartParkingBoyTest {
         ParkingTicket yejiTicket = danielParkingBoy.park(yejiCar);
 
         //then
+        assertEquals(expectedNumberOfCarsInTwo, danielParkingBoy.getNumberOfAvaiableSlots(danielParkingBoy.parkingLots.get(0)));
+        assertEquals(2, danielParkingBoy.getNumberOfAvaiableSlots(danielParkingBoy.parkingLots.get(1)));
         assertEquals(expectedNumberOfCarsInTwo,danielParkingBoy.getParkingLots().get(1).getNumberParkedCars());
     }
 
