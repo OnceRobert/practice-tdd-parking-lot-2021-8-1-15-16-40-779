@@ -1,9 +1,7 @@
 package com.parkinglot;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class SuperSmartParkingBoy {
     List<ParkingLot> parkingLots = new ArrayList<>();
@@ -15,15 +13,14 @@ public class SuperSmartParkingBoy {
     public ParkingTicket park(Car car) {
         int i = 0;
         ParkingLot availableParking = parkingLots.get(0);
-        float maxAvailableSlots = getPercentageOfAvaiableSlots(availableParking);
-        while(availableParking.isFull()||maxAvailableSlots<getPercentageOfAvaiableSlots(parkingLots.get(i))){
-            availableParking = parkingLots.get(i);
+        while(parkingLots.size()>i){
+            if(availableParking.isFull()||getNumberOfAvaiableSlots(availableParking)<getNumberOfAvaiableSlots(parkingLots.get(i))){
+                availableParking = parkingLots.get(i);
+
+            }
             i++;
-            if(parkingLots.size()>i)
-                break;
-            else
-                continue;
         }
+
         return availableParking.park(car);
     }
 
@@ -36,19 +33,18 @@ public class SuperSmartParkingBoy {
         for(int i = 0; fetchedCar == null||i<parkingLots.size();i++){
             try{ fetchedCar = parkingLots.get(i).fetch(parkingTicket); }
             catch (Exception e){
-                if(parkingLots.size()>i)
+                if(i<parkingLots.size())
                     continue;
                 else
                     throw new unrecognizedParkingTicketException();
             }
         }
-        return fetchedCar;
+        try{return fetchedCar;}
+        catch (Exception e){throw new unrecognizedParkingTicketException();}
     }
 
-    public float getPercentageOfAvaiableSlots(ParkingLot parkingLot){
-        float result = (parkingLot.getMaxCapacity() - parkingLot.getNumberParkedCars())/parkingLot.getMaxCapacity() * 100;
-        System.out.println(result);
-        return result;
+    public int getNumberOfAvaiableSlots(ParkingLot parkingLot){
+        return parkingLot.getMaxCapacity() - parkingLot.getNumberParkedCars();
     }
 
 
