@@ -345,6 +345,24 @@ public class ParkingLotTest {
         assertNotNull(chaeryeongTicket);
     }
 
+    @Test
+    void should_correct_cars_when_standard_parking_boy_fetch_twice_given_two_parking_lots_with_car_parked_two_parking_tickets()
+    {
+        //given
+        ParkingLot tdoongParkingLot = new ParkingLot(1);
+        ParkingLot itzyParkingLot = new ParkingLot(5);
+        Car jihyoCar = new Car();
+        Car chaeryeongCar = new Car();
+        StandardParkingBoy danielParkingBoy = new StandardParkingBoy();
+        danielParkingBoy.addParkingLot(tdoongParkingLot);
+        danielParkingBoy.addParkingLot(itzyParkingLot);
+        ParkingTicket jihyoTicket = danielParkingBoy.park(jihyoCar);
+        ParkingTicket chaeryeongTicket = danielParkingBoy.park(chaeryeongCar);
+        //when & then
+        assertEquals(jihyoCar, danielParkingBoy.fetch(jihyoTicket));
+        assertEquals(chaeryeongCar, danielParkingBoy.fetch(chaeryeongTicket));
+    }
+
 
 
 
