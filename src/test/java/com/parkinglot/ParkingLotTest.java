@@ -295,6 +295,21 @@ public class ParkingLotTest {
         assertThrows(fullParkingLotException.class, () -> danielParkingBoy.park(sanaCar));
     }
 
+    @Test
+    void should_throw_unrecognized_parking_ticket_exception_when_standard_parking_boy_given_a_parking_lot_with_a_used_parking_ticket()
+    {
+        //given
+        ParkingLot danielParkingLot = new ParkingLot();
+        Car jihyoCar = new Car();
+        StandardParkingBoy danielParkingBoy = new StandardParkingBoy();
+        danielParkingBoy.addParkingLot(danielParkingLot);
+        ParkingTicket jihyoTicket = danielParkingBoy.park(jihyoCar);
+        jihyoCar = danielParkingBoy.fetch(jihyoTicket);
+        //when & then
+        assertThrows(unrecognizedParkingTicketException.class, () -> danielParkingBoy.fetch(jihyoTicket));
+
+    }
+
 
 
 }
