@@ -11,7 +11,13 @@ public class StandardParkingBoy {
     }
 
     public ParkingTicket park(Car car) {
-        return this.getParkingLots().get(0).park(car);
+        int i = 0;
+        ParkingLot availableParking = parkingLots.get(0);
+        while(availableParking.isFull()&&parkingLots.size()>i){
+            i++;
+            availableParking = parkingLots.get(i);
+        }
+        return availableParking.park(car);
     }
 
     public List<ParkingLot> getParkingLots() {

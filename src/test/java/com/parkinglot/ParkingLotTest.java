@@ -333,7 +333,7 @@ public class ParkingLotTest {
     {
         //given
         ParkingLot tdoongParkingLot = new ParkingLot(1);
-        ParkingLot itzyParkingLot = new ParkingLot(1);
+        ParkingLot itzyParkingLot = new ParkingLot(5);
         Car jihyoCar = new Car();
         Car chaeryeongCar = new Car();
         StandardParkingBoy danielParkingBoy = new StandardParkingBoy();

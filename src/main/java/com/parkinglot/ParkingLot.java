@@ -44,7 +44,7 @@ public class ParkingLot {
         return !unclaimedCars.containsKey(parkingTicket);
     }
 
-    private boolean isFull(){
+    public boolean isFull(){
         return unclaimedCars.size() >= maxCapacity;
     }
 
