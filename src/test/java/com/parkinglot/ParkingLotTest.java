@@ -328,6 +328,24 @@ public class ParkingLotTest {
         assertTrue(danielParkingBoy.getParkingLots().get(0).getNumberParkedCars()>danielParkingBoy.getParkingLots().get(1).getNumberParkedCars());
     }
 
+    @Test
+    void should_return_parking_ticket_when_standard_parking_boy_park_given_a_parking_lot_at_full_capacity_and_a_parking_lot_with_available_space()
+    {
+        //given
+        ParkingLot tdoongParkingLot = new ParkingLot(1);
+        ParkingLot itzyParkingLot = new ParkingLot(1);
+        Car jihyoCar = new Car();
+        Car chaeryeongCar = new Car();
+        StandardParkingBoy danielParkingBoy = new StandardParkingBoy();
+        danielParkingBoy.addParkingLot(tdoongParkingLot);
+        danielParkingBoy.addParkingLot(itzyParkingLot);
+        ParkingTicket jihyoTicket = danielParkingBoy.park(jihyoCar);
+        ParkingTicket chaeryeongTicket = danielParkingBoy.park(chaeryeongCar);
+        //when & then
+        assertNotNull(chaeryeongTicket);
+    }
+
+
 
 
 

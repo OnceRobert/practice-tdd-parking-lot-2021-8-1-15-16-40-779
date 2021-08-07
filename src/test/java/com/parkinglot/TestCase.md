@@ -72,7 +72,7 @@ When park the car,
 Then return nothing with error message "No Available Position"
 
 # Story 4
-[] Case1
+[X] Case1
 Given a standard parking boy, who manage two parking lots, both with available position, and a car,   
 When park the car,   
 Then the car will be parked to the first parking lot
