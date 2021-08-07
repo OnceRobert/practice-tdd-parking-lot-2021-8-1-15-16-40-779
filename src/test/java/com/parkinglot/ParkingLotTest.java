@@ -411,6 +411,37 @@ public class ParkingLotTest {
     }
 
 
+    //TESTS for story 5 smart Parking boy
+    @Test
+    void should_park_in_parking_lot_two_when_smart_parking_boy_park_given_parking_lot_with_two_cars_and_four_max_capacity_and_a_parking_lot_with_one_car_and_four_max_capacity()
+    {
+        //given
+        ParkingLot tdoongParkingLot = new ParkingLot(4);
+        ParkingLot itzyParkingLot = new ParkingLot(4);
+
+        Car jihyoCar = new Car();
+        Car dahyunCar = new Car();
+
+        Car chaeryeongCar = new Car();
+        Car yejiCar = new Car();
+
+        StandardParkingBoy danielParkingBoy = new StandardParkingBoy();
+        danielParkingBoy.addParkingLot(tdoongParkingLot);
+        danielParkingBoy.addParkingLot(itzyParkingLot);
+        ParkingTicket jihyoTicket = danielParkingBoy.getParkingLots().get(0).park(jihyoCar);
+        ParkingTicket dahyunTicket = danielParkingBoy.getParkingLots().get(0).park(dahyunCar);
+        ParkingTicket chaeryeongTicket = danielParkingBoy.getParkingLots().get(1).park(chaeryeongCar);
+        int expectedNumberOfCarsInTwo = 2;
+
+        //when
+        ParkingTicket yejiTicket = danielParkingBoy.park(yejiCar);
+
+
+        //then
+        assertEquals(expectedNumberOfCarsInTwo,danielParkingBoy.getParkingLots().get(1).getNumberParkedCars());
+
+    }
+
 
 
 
