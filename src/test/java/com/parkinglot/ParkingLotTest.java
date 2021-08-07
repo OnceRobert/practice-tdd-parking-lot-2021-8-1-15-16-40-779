@@ -310,6 +310,25 @@ public class ParkingLotTest {
 
     }
 
+    //TESTS For story 4 Standard Parking boy
+    @Test
+    void should_parked_cars_one_is_greater_than_parked_cars_two_when_standard_parking_boy_park_given_two_parking_lots_and_car()
+    {
+        //given
+        ParkingLot tdoongParkingLot = new ParkingLot();
+        ParkingLot itzyParkingLot = new ParkingLot();
+        Car jihyoCar = new Car();
+        StandardParkingBoy danielParkingBoy = new StandardParkingBoy();
+        danielParkingBoy.addParkingLot(tdoongParkingLot);
+        danielParkingBoy.addParkingLot(itzyParkingLot);
+
+        ParkingTicket jihyoTicket = danielParkingBoy.park(jihyoCar);
+
+        //when & then
+        assertTrue(danielParkingBoy.getParkingLots().get(0).getNumberParkedCars()>danielParkingBoy.getParkingLots().get(1).getNumberParkedCars());
+    }
+
+
 
 
 }

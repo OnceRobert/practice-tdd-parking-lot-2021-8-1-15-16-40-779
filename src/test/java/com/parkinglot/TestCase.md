@@ -61,12 +61,12 @@ Given a parking lot, a standard parking boy, and a wrong parking ticket
 When fetch the car  
 Then return nothing with error message "Unrecognized parking ticket."
 
-[] Case5
+[X] Case5
 Given a parking lot, a standard parking boy, and a used parking ticket,   
 When fetch the car,  
 Then return nothing with error message "Unrecognized parking ticket."
 
-[] Case6
+[X] Case6
 Given a parking lot without any position, a standard parking boy, and a car  
 When park the car,  
 Then return nothing with error message "No Available Position"
