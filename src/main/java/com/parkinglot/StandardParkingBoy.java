@@ -29,7 +29,10 @@ public class StandardParkingBoy {
         for(int i = 0; fetchedCar == null||i<parkingLots.size();i++){
             try{ fetchedCar = parkingLots.get(i).fetch(parkingTicket); }
             catch (Exception e){
-                continue;
+                if(parkingLots.size()>i)
+                    continue;
+                else
+                    throw new unrecognizedParkingTicketException();
             }
         }
         return fetchedCar;
