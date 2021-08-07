@@ -27,9 +27,13 @@ public class StandardParkingBoy {
     public Car fetch(ParkingTicket parkingTicket) {
         Car fetchedCar = null;
         for(int i = 0; fetchedCar == null||i<parkingLots.size();i++){
-            fetchedCar = parkingLots.get(i).fetch(parkingTicket);
+            try{ fetchedCar = parkingLots.get(i).fetch(parkingTicket); }
+            catch (Exception e){
+                continue;
+            }
         }
         return fetchedCar;
     }
+
 
 }
