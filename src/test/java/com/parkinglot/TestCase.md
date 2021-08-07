@@ -113,7 +113,7 @@ When park the car,
 Then park the car in the first parking lot
 
 # Story 6
-[] Case1
+[X] Case1
 Given a smart parking boy, a parking lot with 2 parked cars and 4 max capacity (50% free) and a parking lot with 2 parked car and 5 max capacity (60% free)  
 When park the car,  
 Then park the car in the second parking lot

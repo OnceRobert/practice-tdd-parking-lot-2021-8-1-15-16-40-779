@@ -14,9 +14,8 @@ public class SuperSmartParkingBoy {
         int i = 0;
         ParkingLot availableParking = parkingLots.get(0);
         while(parkingLots.size()>i){
-            if(availableParking.isFull()||getNumberOfAvaiableSlots(availableParking)<getNumberOfAvaiableSlots(parkingLots.get(i))){
+            if(availableParking.isFull()||getPercentageOfFreeSlots(availableParking)<getPercentageOfFreeSlots(parkingLots.get(i))){
                 availableParking = parkingLots.get(i);
-
             }
             i++;
         }
@@ -43,8 +42,9 @@ public class SuperSmartParkingBoy {
         catch (Exception e){throw new unrecognizedParkingTicketException();}
     }
 
-    public int getNumberOfAvaiableSlots(ParkingLot parkingLot){
-        return parkingLot.getMaxCapacity() - parkingLot.getNumberParkedCars();
+    public int getPercentageOfFreeSlots(ParkingLot parkingLot){
+        int result = 100 -( parkingLot.getNumberParkedCars()*100/parkingLot.getMaxCapacity());
+        return result;
     }
 
 
