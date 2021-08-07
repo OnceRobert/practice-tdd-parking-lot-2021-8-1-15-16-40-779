@@ -31,20 +31,13 @@ public class ParkingLot {
 
     public Car fetch(ParkingTicket parkingTicket) {
         Car fetchedCar = null;
-        try {
             if (isUnrecognizedTicket(parkingTicket)) {
+                System.out.print("Unrecognized Ticket\n");
                 throw new unrecognizedParkingTicketException();
             }
             fetchedCar = unclaimedCars.get(parkingTicket);
             unclaimedCars.remove(parkingTicket);
             return fetchedCar;
-        } catch (Exception e) {
-            System.out.print("Unrecognized Ticket\n");
-            throw new unrecognizedParkingTicketException();
-        }
-        finally {
-            return fetchedCar;
-        }
     }
 
     private boolean isUnrecognizedTicket(ParkingTicket parkingTicket){

@@ -130,10 +130,10 @@ public class ParkingLotTest {
         Car excessCar = new Car();
         ParkingTicket expectedTicket = null;
         //when
-        ParkingTicket actualTicket = parkingLot.park(excessCar);
+        //ParkingTicket actualTicket = parkingLot.park(excessCar);
 
         //then
-        assertNull(actualTicket);
+        Exception exception = assertThrows(fullParkingLotException.class, () -> parkingLot.park(excessCar));
 
     }
 
@@ -154,7 +154,8 @@ public class ParkingLotTest {
         String expectedMessage = "Unrecognized Ticket\n";
 
         //then
-        assertEquals(expectedMessage,getCommandLineText());
+//        assertEquals(expectedMessage,getCommandLineText());
+        Exception exception = assertThrows(unrecognizedParkingTicketException.class, () -> parkingLot.fetch(parkingTicket));
     }
 
     private String getCommandLineText() {
