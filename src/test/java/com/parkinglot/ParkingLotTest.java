@@ -266,4 +266,17 @@ public class ParkingLotTest {
         assertEquals(sanaCar,danielParkingBoy.fetch(sanaTicket));
     }
 
+    @Test
+    void should_return_unrecognized_parking_ticket_exception_when_standard_parking_boy_fetch_given_a_parking_lot_and_an_invalid_ticket()
+    {
+        //given
+        ParkingLot danielParkingLot = new ParkingLot();
+        ParkingTicket fakeTicket = new ParkingTicket();
+        StandardParkingBoy danielParkingBoy = new StandardParkingBoy();
+        danielParkingBoy.addParkingLot(danielParkingLot);
+
+        //when & then
+        assertThrows(unrecognizedParkingTicketException.class, () -> danielParkingBoy.fetch(fakeTicket));
+    }
+
 }
