@@ -144,15 +144,14 @@ public class SuperSmartParkingBoyTest {
         assertEquals(expectedNumberOfCarsInTwo,danielParkingBoy.getParkingLots().get(1).getNumberParkedCars());
     }
     @Test
-    void should_park_in_parking_lot_two_when_super_smart_parking_boy_park_given_parking_lot_one_with_50p_available_capacity_and_parking_lot_two_with_60p_available_capacity()
+    void should_park_in_parking_lot_two_when_super_smart_parking_boy_park_given_parking_lot_one_with_90p_available_capacity_and_parking_lot_two_with_40p_available_capacity()
     {   //Given a smart parking boy, a parking lot with 2 parked cars and 4 max capacity (50% free) and a parking lot with 2 parked car and 5 max capacity (60% free)
         //given
-        ParkingLot tdoongParkingLot = new ParkingLot(6);
+        ParkingLot tdoongParkingLot = new ParkingLot(10);
         ParkingLot itzyParkingLot = new ParkingLot(5);
 
         Car jihyoCar = new Car();
         Car dahyunCar = new Car();
-        Car tzuyuCar = new Car();
 
         Car chaeryeongCar = new Car();
         Car yejiCar = new Car();
@@ -161,18 +160,18 @@ public class SuperSmartParkingBoyTest {
         danielParkingBoy.addParkingLot(tdoongParkingLot);
         danielParkingBoy.addParkingLot(itzyParkingLot);
         ParkingTicket jihyoTicket = danielParkingBoy.getParkingLots().get(0).park(jihyoCar);
-        ParkingTicket dahyunTicket = danielParkingBoy.getParkingLots().get(0).park(dahyunCar);
-        ParkingTicket tzuyuTicket = danielParkingBoy.getParkingLots().get(0).park(tzuyuCar);
+        ParkingTicket dahyunTicket = danielParkingBoy.getParkingLots().get(1).park(dahyunCar);
+
         ParkingTicket chaeryeongTicket = danielParkingBoy.getParkingLots().get(1).park(chaeryeongCar);
         ParkingTicket yejiTicket = danielParkingBoy.getParkingLots().get(1).park(yejiCar);
-        int expectedNumberOfCarsInTwo = 3;
+        int expectedNumberOfCarsInOne = 2;
+        Car tzuyuCar = new Car();
 
-        Car yunaCar = new Car();
         //when
-        ParkingTicket yunaTicket = danielParkingBoy.park(yunaCar);
+        ParkingTicket tzuyuTicket = danielParkingBoy.park(tzuyuCar);
 
         //then
-        assertEquals(expectedNumberOfCarsInTwo,danielParkingBoy.getParkingLots().get(1).getNumberParkedCars());
+        assertEquals(expectedNumberOfCarsInOne,danielParkingBoy.getParkingLots().get(0).getNumberParkedCars());
     }
 
 
