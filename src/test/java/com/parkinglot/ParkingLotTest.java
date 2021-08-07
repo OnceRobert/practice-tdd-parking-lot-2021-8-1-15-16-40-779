@@ -219,7 +219,6 @@ public class ParkingLotTest {
 
         //when & then
         assertNotNull(danielParkingBoy.getParkingLots());
-        //then
     }
 
 
@@ -234,7 +233,20 @@ public class ParkingLotTest {
 
         //when & then
         assertNotNull(danielParkingBoy.park(jihyoCar));
-        //then
+    }
+
+    @Test
+    void should_return_a_car_when_standard_parking_boy_given_a_parking_lot_with_a_parked_car_and_a_parking_ticket()
+    {
+        //given
+        ParkingLot danielParkingLot = new ParkingLot();
+        Car jihyoCar = new Car();
+        StandardParkingBoy danielParkingBoy = new StandardParkingBoy();
+        danielParkingBoy.addParkingLot(danielParkingLot);
+        ParkingTicket jihyoTicket = danielParkingBoy.park(jihyoCar);
+
+        //when & then
+        assertEquals(jihyoCar,danielParkingBoy.fetch(jihyoTicket));
     }
 
 }

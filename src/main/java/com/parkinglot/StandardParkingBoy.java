@@ -17,4 +17,8 @@ public class StandardParkingBoy {
     public List<ParkingLot> getParkingLots() {
         return parkingLots;
     }
+
+    public Car fetch(ParkingTicket parkingTicket) {
+        return null;
+    }
 }
