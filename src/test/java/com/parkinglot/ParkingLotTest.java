@@ -193,5 +193,19 @@ public class ParkingLotTest {
         //then
     }
 
+    @Test
+    void should_throw_exception_with_error_message_when_park_given_a_parking_lot_at_full_capacity()
+    {
+        //given
+        ParkingLot parkingLot = new ParkingLot(1);
+        Car momoCar = new Car();
+        Car minaCar = new Car();
+        parkingLot.park(momoCar);
+
+        //when & then
+        Exception exception = assertThrows(fullParkingLotException.class, () -> parkingLot.park(minaCar));
+        //assertEquals("Unrecognized parking ticket.", exception.getMessage());
+    }
+
 
 }
