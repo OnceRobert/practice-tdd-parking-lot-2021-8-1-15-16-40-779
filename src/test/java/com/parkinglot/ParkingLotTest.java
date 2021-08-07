@@ -249,4 +249,21 @@ public class ParkingLotTest {
         assertEquals(jihyoCar,danielParkingBoy.fetch(jihyoTicket));
     }
 
+    @Test
+    void should_return_correct_cars_when_standard_parking_boy_given_a_parking_lot_with_two_parked_cars_and_two_parking_tickets()
+    {
+        //given
+        ParkingLot danielParkingLot = new ParkingLot();
+        Car jihyoCar = new Car();
+        Car sanaCar = new Car();
+        StandardParkingBoy danielParkingBoy = new StandardParkingBoy();
+        danielParkingBoy.addParkingLot(danielParkingLot);
+        ParkingTicket jihyoTicket = danielParkingBoy.park(jihyoCar);
+        ParkingTicket sanaTicket = danielParkingBoy.park(sanaCar);
+
+        //when & then
+        assertEquals(jihyoCar,danielParkingBoy.fetch(jihyoTicket));
+        assertEquals(sanaCar,danielParkingBoy.fetch(sanaTicket));
+    }
+
 }
