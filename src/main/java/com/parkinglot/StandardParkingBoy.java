@@ -3,13 +3,7 @@ package com.parkinglot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StandardParkingBoy {
-    List<ParkingLot> parkingLots = new ArrayList<>();
-
-    public void addParkingLot(ParkingLot danielParkingLot) {
-        parkingLots.add(danielParkingLot);
-    }
-
+public class StandardParkingBoy extends ParkingBoy{
     public ParkingTicket park(Car car) {
         int i = 0;
         ParkingLot availableParking = parkingLots.get(0);
@@ -19,24 +13,5 @@ public class StandardParkingBoy {
         }
         return availableParking.park(car);
     }
-
-    public List<ParkingLot> getParkingLots() {
-        return parkingLots;
-    }
-
-    public Car fetch(ParkingTicket parkingTicket) {
-        Car fetchedCar = null;
-        for(int i = 0; fetchedCar == null||i<parkingLots.size();i++){
-            try{ fetchedCar = parkingLots.get(i).fetch(parkingTicket); }
-            catch (Exception e){
-                if(parkingLots.size()>i)
-                    continue;
-                else
-                    throw new unrecognizedParkingTicketException();
-            }
-        }
-        return fetchedCar;
-    }
-
 
 }

@@ -3,24 +3,14 @@ package com.parkinglot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SmartParkingBoy {
+public abstract class ParkingBoy {
     List<ParkingLot> parkingLots = new ArrayList<>();
 
     public void addParkingLot(ParkingLot danielParkingLot) {
         parkingLots.add(danielParkingLot);
     }
 
-    public ParkingTicket park(Car car) {
-        int i = 0;
-        ParkingLot availableParking = parkingLots.get(0);
-        while(parkingLots.size()>i){
-            if(availableParking.isFull()||getNumberOfAvaiableSlots(availableParking)<getNumberOfAvaiableSlots(parkingLots.get(i))){
-                availableParking = parkingLots.get(i);
-            }
-            i++;
-        }
-        return availableParking.park(car);
-    }
+    public ParkingTicket park(Car car) {}
 
     public List<ParkingLot> getParkingLots() {
         return parkingLots;
@@ -39,9 +29,5 @@ public class SmartParkingBoy {
         }
         try{return fetchedCar;}
         catch (Exception e){throw new unrecognizedParkingTicketException();}
-    }
-
-    public int getNumberOfAvaiableSlots(ParkingLot parkingLot){
-        return parkingLot.getMaxCapacity() - parkingLot.getNumberParkedCars();
     }
 }
