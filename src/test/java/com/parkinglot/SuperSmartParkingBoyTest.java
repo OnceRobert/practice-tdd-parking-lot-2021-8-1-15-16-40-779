@@ -18,7 +18,7 @@ public class SuperSmartParkingBoyTest {
         danielParkingBoy.addParkingLot(tdoongParkingLot);
         danielParkingBoy.addParkingLot(itzyParkingLot);
 
-        ParkingTicket jihyoTicket = danielParkingBoy.park(jihyoCar);
+        danielParkingBoy.park(jihyoCar);
 
         //when & then
         assertEquals(1,danielParkingBoy.getParkingLots().get(0).getNumberParkedCars());
@@ -35,7 +35,7 @@ public class SuperSmartParkingBoyTest {
         SuperSmartParkingBoy danielParkingBoy = new SuperSmartParkingBoy();
         danielParkingBoy.addParkingLot(tdoongParkingLot);
         danielParkingBoy.addParkingLot(itzyParkingLot);
-        ParkingTicket jihyoTicket = danielParkingBoy.park(jihyoCar);
+        danielParkingBoy.park(jihyoCar);
         ParkingTicket chaeryeongTicket = danielParkingBoy.park(chaeryeongCar);
         //when & then
         assertNotNull(chaeryeongTicket);
@@ -86,7 +86,7 @@ public class SuperSmartParkingBoyTest {
 
         Car jihyoCar = new Car();
         ParkingTicket jihyoTicket = danielParkingBoy.park(jihyoCar);
-        jihyoCar = danielParkingBoy.fetch(jihyoTicket);
+        danielParkingBoy.fetch(jihyoTicket);
 
         //when & then
         assertThrows(unrecognizedParkingTicketException.class, () -> danielParkingBoy.fetch(jihyoTicket));
@@ -104,8 +104,8 @@ public class SuperSmartParkingBoyTest {
         SuperSmartParkingBoy danielParkingBoy = new SuperSmartParkingBoy();
         danielParkingBoy.addParkingLot(tdoongParkingLot);
         danielParkingBoy.addParkingLot(itzyParkingLot);
-        ParkingTicket jihyoTicket = danielParkingBoy.park(jihyoCar);
-        ParkingTicket chaeryeongTicket = danielParkingBoy.park(chaeryeongCar);
+        danielParkingBoy.park(jihyoCar);
+        danielParkingBoy.park(chaeryeongCar);
         //when & then
 
         assertThrows(fullParkingLotException.class, () -> danielParkingBoy.park(excessCar));
@@ -129,16 +129,16 @@ public class SuperSmartParkingBoyTest {
         SuperSmartParkingBoy danielParkingBoy = new SuperSmartParkingBoy();
         danielParkingBoy.addParkingLot(tdoongParkingLot);
         danielParkingBoy.addParkingLot(itzyParkingLot);
-        ParkingTicket jihyoTicket = danielParkingBoy.getParkingLots().get(0).park(jihyoCar);
-        ParkingTicket dahyunTicket = danielParkingBoy.getParkingLots().get(0).park(dahyunCar);
-        ParkingTicket tzuyuTicket = danielParkingBoy.getParkingLots().get(0).park(tzuyuCar);
-        ParkingTicket chaeryeongTicket = danielParkingBoy.getParkingLots().get(1).park(chaeryeongCar);
-        ParkingTicket yejiTicket = danielParkingBoy.getParkingLots().get(1).park(yejiCar);
+        danielParkingBoy.getParkingLots().get(0).park(jihyoCar);
+        danielParkingBoy.getParkingLots().get(0).park(dahyunCar);
+        danielParkingBoy.getParkingLots().get(0).park(tzuyuCar);
+        danielParkingBoy.getParkingLots().get(1).park(chaeryeongCar);
+        danielParkingBoy.getParkingLots().get(1).park(yejiCar);
         int expectedNumberOfCarsInTwo = 3;
 
         Car yunaCar = new Car();
         //when
-        ParkingTicket yunaTicket = danielParkingBoy.park(yunaCar);
+        danielParkingBoy.park(yunaCar);
 
         //then
         assertEquals(expectedNumberOfCarsInTwo,danielParkingBoy.getParkingLots().get(1).getNumberParkedCars());
@@ -159,16 +159,16 @@ public class SuperSmartParkingBoyTest {
         SuperSmartParkingBoy danielParkingBoy = new SuperSmartParkingBoy();
         danielParkingBoy.addParkingLot(tdoongParkingLot);
         danielParkingBoy.addParkingLot(itzyParkingLot);
-        ParkingTicket jihyoTicket = danielParkingBoy.getParkingLots().get(0).park(jihyoCar);
-        ParkingTicket dahyunTicket = danielParkingBoy.getParkingLots().get(1).park(dahyunCar);
+        danielParkingBoy.getParkingLots().get(0).park(jihyoCar);
+        danielParkingBoy.getParkingLots().get(1).park(dahyunCar);
 
-        ParkingTicket chaeryeongTicket = danielParkingBoy.getParkingLots().get(1).park(chaeryeongCar);
-        ParkingTicket yejiTicket = danielParkingBoy.getParkingLots().get(1).park(yejiCar);
+        danielParkingBoy.getParkingLots().get(1).park(chaeryeongCar);
+        danielParkingBoy.getParkingLots().get(1).park(yejiCar);
         int expectedNumberOfCarsInOne = 2;
         Car tzuyuCar = new Car();
 
         //when
-        ParkingTicket tzuyuTicket = danielParkingBoy.park(tzuyuCar);
+        danielParkingBoy.park(tzuyuCar);
 
         //then
         assertEquals(expectedNumberOfCarsInOne,danielParkingBoy.getParkingLots().get(0).getNumberParkedCars());
