@@ -4,8 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ParkingLot {
-    private int maxCapacity = 10;
-    //private Car car;
+    private int maxCapacity;
     private Map<ParkingTicket,Car> unclaimedCars = new HashMap<>();
 
     public ParkingLot(int maxCapacity){
@@ -20,17 +19,14 @@ public class ParkingLot {
         if (isFull()) {
             System.out.print("No Available Position\n");
             throw new fullParkingLotException();
-            //return null;
         }
-        //this.car = car;
         ParkingTicket newTicket = new ParkingTicket();
         unclaimedCars.put(newTicket, car);
-        //return null;
         return newTicket;
     }
 
     public Car fetch(ParkingTicket parkingTicket) {
-        Car fetchedCar = null;
+        Car fetchedCar;
             if (isUnrecognizedTicket(parkingTicket)) {
                 System.out.print("Unrecognized Ticket\n");
                 throw new unrecognizedParkingTicketException();
