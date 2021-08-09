@@ -10,7 +10,7 @@ public abstract class ParkingBoy {
         parkingLots.add(danielParkingLot);
     }
 
-    public ParkingTicket park(Car car) {}
+    abstract public ParkingTicket park(Car car);
 
     public List<ParkingLot> getParkingLots() {
         return parkingLots;
