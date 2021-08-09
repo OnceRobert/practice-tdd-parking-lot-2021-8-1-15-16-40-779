@@ -60,8 +60,8 @@ public class ParkingLotTest {
             //given
             ParkingLot parkingLot = new ParkingLot();
             Car car2 = new Car();
-            ParkingTicket parkingTicket = parkingLot.park(car2);
-            Car carExpected = null;
+            parkingLot.park(car2);
+            //Car carExpected = null;
             //when & then
             assertThrows(unrecognizedParkingTicketException.class,() -> parkingLot.fetch(null));
         }
@@ -79,7 +79,7 @@ public class ParkingLotTest {
         ParkingTicket parkingTicket = parkingLot.park(car);
         Car expectedCar = null;
         //when
-        Car actualCar = parkingLot.fetch(parkingTicket);
+        parkingLot.fetch(parkingTicket);
         //actualCar = parkingLot.fetch(parkingTicket);
 
         //then
@@ -123,12 +123,12 @@ public class ParkingLotTest {
             tdoongParkingTickets.add(parkingLot.park(tdoongCars.get(i)));
         }
         Car excessCar = new Car();
-        ParkingTicket expectedTicket = null;
+        //ParkingTicket expectedTicket = null;
         //when
         //ParkingTicket actualTicket = parkingLot.park(excessCar);
 
         //then
-        Exception exception = assertThrows(fullParkingLotException.class, () -> parkingLot.park(excessCar));
+        assertThrows(fullParkingLotException.class, () -> parkingLot.park(excessCar));
 
     }
 
@@ -145,12 +145,8 @@ public class ParkingLotTest {
         parkingLot.fetch(parkingTicket);
         //parkingLot.fetch(parkingTicket);        //Used ticket
 
-        //when
-        String expectedMessage = "Unrecognized Ticket\n";
-
-        //then
-//        assertEquals(expectedMessage,getCommandLineText());
-        Exception exception = assertThrows(unrecognizedParkingTicketException.class, () -> parkingLot.fetch(parkingTicket));
+        //when & then
+        assertThrows(unrecognizedParkingTicketException.class, () -> parkingLot.fetch(parkingTicket));
     }
 
     private String getCommandLineText() {
@@ -168,7 +164,7 @@ public class ParkingLotTest {
             tdoongCars.add(new Car());
             tdoongParkingTickets.add(parkingLot.park(tdoongCars.get(i)));
         }
-        String expectedMessage = "No Available Position\n";
+        //String expectedMessage = "No Available Position\n";
         Car excessCar = new Car();
         //when & then
         //assertEquals(expectedMessage,getCommandLineText());
@@ -197,7 +193,7 @@ public class ParkingLotTest {
         parkingLot.park(momoCar);
 
         //when & then
-        Exception exception = assertThrows(fullParkingLotException.class, () -> parkingLot.park(minaCar));
+        assertThrows(fullParkingLotException.class, () -> parkingLot.park(minaCar));
         //assertEquals("Unrecognized parking ticket.", exception.getMessage());
     }
 
@@ -282,7 +278,7 @@ public class ParkingLotTest {
         Car sanaCar = new Car();
         StandardParkingBoy danielParkingBoy = new StandardParkingBoy();
         danielParkingBoy.addParkingLot(danielParkingLot);
-        ParkingTicket jihyoTicket = danielParkingBoy.park(jihyoCar);
+        danielParkingBoy.park(jihyoCar);
 
         //when & then
         //assertEquals(jihyoCar,danielParkingBoy.fetch(jihyoTicket));
@@ -298,7 +294,7 @@ public class ParkingLotTest {
         StandardParkingBoy danielParkingBoy = new StandardParkingBoy();
         danielParkingBoy.addParkingLot(danielParkingLot);
         ParkingTicket jihyoTicket = danielParkingBoy.park(jihyoCar);
-        jihyoCar = danielParkingBoy.fetch(jihyoTicket);
+        danielParkingBoy.fetch(jihyoTicket);
         //when & then
         assertThrows(unrecognizedParkingTicketException.class, () -> danielParkingBoy.fetch(jihyoTicket));
 
@@ -316,7 +312,7 @@ public class ParkingLotTest {
         danielParkingBoy.addParkingLot(tdoongParkingLot);
         danielParkingBoy.addParkingLot(itzyParkingLot);
 
-        ParkingTicket jihyoTicket = danielParkingBoy.park(jihyoCar);
+        danielParkingBoy.park(jihyoCar);
 
         //when & then
         assertTrue(danielParkingBoy.getParkingLots().get(0).getNumberParkedCars()>danielParkingBoy.getParkingLots().get(1).getNumberParkedCars());
@@ -333,7 +329,7 @@ public class ParkingLotTest {
         StandardParkingBoy danielParkingBoy = new StandardParkingBoy();
         danielParkingBoy.addParkingLot(tdoongParkingLot);
         danielParkingBoy.addParkingLot(itzyParkingLot);
-        ParkingTicket jihyoTicket = danielParkingBoy.park(jihyoCar);
+        danielParkingBoy.park(jihyoCar);
         ParkingTicket chaeryeongTicket = danielParkingBoy.park(chaeryeongCar);
         //when & then
         assertNotNull(chaeryeongTicket);
@@ -384,7 +380,7 @@ public class ParkingLotTest {
 
         Car jihyoCar = new Car();
         ParkingTicket jihyoTicket = danielParkingBoy.park(jihyoCar);
-        jihyoCar = danielParkingBoy.fetch(jihyoTicket);
+        danielParkingBoy.fetch(jihyoTicket);
 
         //when & then
         assertThrows(unrecognizedParkingTicketException.class, () -> danielParkingBoy.fetch(jihyoTicket));
@@ -402,8 +398,8 @@ public class ParkingLotTest {
         StandardParkingBoy danielParkingBoy = new StandardParkingBoy();
         danielParkingBoy.addParkingLot(tdoongParkingLot);
         danielParkingBoy.addParkingLot(itzyParkingLot);
-        ParkingTicket jihyoTicket = danielParkingBoy.park(jihyoCar);
-        ParkingTicket chaeryeongTicket = danielParkingBoy.park(chaeryeongCar);
+        danielParkingBoy.park(jihyoCar);
+        danielParkingBoy.park(chaeryeongCar);
         //when & then
 
 
