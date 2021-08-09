@@ -6,8 +6,8 @@ import java.util.List;
 public abstract class ParkingBoy {
     List<ParkingLot> parkingLots = new ArrayList<>();
 
-    public void addParkingLot(ParkingLot danielParkingLot) {
-        parkingLots.add(danielParkingLot);
+    public void addParkingLot(ParkingLot newParkingLot) {
+        parkingLots.add(newParkingLot);
     }
 
     abstract public ParkingTicket park(Car car);
