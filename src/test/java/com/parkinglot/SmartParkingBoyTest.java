@@ -18,7 +18,7 @@ public class SmartParkingBoyTest {
         danielParkingBoy.addParkingLot(tdoongParkingLot);
         danielParkingBoy.addParkingLot(itzyParkingLot);
 
-        ParkingTicket jihyoTicket = danielParkingBoy.park(jihyoCar);
+        danielParkingBoy.park(jihyoCar);
 
         //when & then
         assertEquals(1,danielParkingBoy.getParkingLots().get(0).getNumberParkedCars());
@@ -35,7 +35,7 @@ public class SmartParkingBoyTest {
         SmartParkingBoy danielParkingBoy = new SmartParkingBoy();
         danielParkingBoy.addParkingLot(tdoongParkingLot);
         danielParkingBoy.addParkingLot(itzyParkingLot);
-        ParkingTicket jihyoTicket = danielParkingBoy.park(jihyoCar);
+        danielParkingBoy.park(jihyoCar);
         ParkingTicket chaeryeongTicket = danielParkingBoy.park(chaeryeongCar);
         //when & then
         assertNotNull(chaeryeongTicket);
@@ -86,7 +86,7 @@ public class SmartParkingBoyTest {
 
         Car jihyoCar = new Car();
         ParkingTicket jihyoTicket = danielParkingBoy.park(jihyoCar);
-        jihyoCar = danielParkingBoy.fetch(jihyoTicket);
+        danielParkingBoy.fetch(jihyoTicket);
 
         //when & then
         assertThrows(unrecognizedParkingTicketException.class, () -> danielParkingBoy.fetch(jihyoTicket));
@@ -104,8 +104,8 @@ public class SmartParkingBoyTest {
         SmartParkingBoy danielParkingBoy = new SmartParkingBoy();
         danielParkingBoy.addParkingLot(tdoongParkingLot);
         danielParkingBoy.addParkingLot(itzyParkingLot);
-        ParkingTicket jihyoTicket = danielParkingBoy.park(jihyoCar);
-        ParkingTicket chaeryeongTicket = danielParkingBoy.park(chaeryeongCar);
+        danielParkingBoy.park(jihyoCar);
+        danielParkingBoy.park(chaeryeongCar);
         //when & then
 
         assertThrows(fullParkingLotException.class, () -> danielParkingBoy.park(excessCar));
@@ -127,13 +127,13 @@ public class SmartParkingBoyTest {
         SmartParkingBoy danielParkingBoy = new SmartParkingBoy();
         danielParkingBoy.addParkingLot(tdoongParkingLot);
         danielParkingBoy.addParkingLot(itzyParkingLot);
-        ParkingTicket jihyoTicket = danielParkingBoy.getParkingLots().get(0).park(jihyoCar);
-        ParkingTicket dahyunTicket = danielParkingBoy.getParkingLots().get(0).park(dahyunCar);
-        ParkingTicket chaeryeongTicket = danielParkingBoy.getParkingLots().get(1).park(chaeryeongCar);
+        danielParkingBoy.getParkingLots().get(0).park(jihyoCar);
+        danielParkingBoy.getParkingLots().get(0).park(dahyunCar);
+        danielParkingBoy.getParkingLots().get(1).park(chaeryeongCar);
         int expectedNumberOfCarsInTwo = 2;
 
         //when
-        ParkingTicket yejiTicket = danielParkingBoy.park(yejiCar);
+        danielParkingBoy.park(yejiCar);
 
         //then
         assertEquals(expectedNumberOfCarsInTwo, danielParkingBoy.getNumberOfAvaiableSlots(danielParkingBoy.parkingLots.get(0)));
@@ -158,14 +158,14 @@ public class SmartParkingBoyTest {
         SmartParkingBoy danielParkingBoy = new SmartParkingBoy();
         danielParkingBoy.addParkingLot(tdoongParkingLot);
         danielParkingBoy.addParkingLot(itzyParkingLot);
-        ParkingTicket jihyoTicket = danielParkingBoy.getParkingLots().get(0).park(jihyoCar);
-        ParkingTicket yejiTicket = danielParkingBoy.getParkingLots().get(1).park(yejiCar);
-        ParkingTicket yunaTicket = danielParkingBoy.getParkingLots().get(1).park(yunaCar);
-        ParkingTicket chaeryeongTicket = danielParkingBoy.getParkingLots().get(1).park(chaeryeongCar);
+        danielParkingBoy.getParkingLots().get(0).park(jihyoCar);
+        danielParkingBoy.getParkingLots().get(1).park(yejiCar);
+        danielParkingBoy.getParkingLots().get(1).park(yunaCar);
+        danielParkingBoy.getParkingLots().get(1).park(chaeryeongCar);
         int expectedNumberOfCarsInOne = 2;
 
         //when
-        ParkingTicket dahyunTicket = danielParkingBoy.getParkingLots().get(0).park(dahyunCar);
+        danielParkingBoy.getParkingLots().get(0).park(dahyunCar);
 
         //then
         assertEquals(expectedNumberOfCarsInOne,danielParkingBoy.getParkingLots().get(0).getNumberParkedCars());
